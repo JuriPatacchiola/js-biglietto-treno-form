@@ -22,6 +22,17 @@
         return;
       }
     
+       // Calcolo prezzo base
+      const basePrice = km * PRICE_PER_KM;
+      let discount = 0;
+
+      // Regole di sconto
+      if (age < 18) {
+        discount = 0.20; // 20% sconto
+      } else if (age >= 65) {
+        discount = 0.40; // 40% sconto
+      }
+
     
     
     
