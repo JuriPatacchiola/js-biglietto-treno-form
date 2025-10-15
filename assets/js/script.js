@@ -11,7 +11,16 @@
       const km = parseFloat(form.km.value);
       const age = parseInt(form.age.value, 10);
     
-    
+     // Validazione base
+      if (isNaN(km) || km <= 0) {
+        console.error('Errore: inserisci un numero di chilometri valido.');
+        return;
+      }
+
+      if (isNaN(age) || age < 0) {
+        console.error('Errore: inserisci un\'età valida.');
+        return;
+      }
     
     
     
