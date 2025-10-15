@@ -7,7 +7,9 @@
     form.addEventListener('submit', function(event) {
       event.preventDefault();
     
-    
+      // Leggo i valori dagli input del form
+      const km = parseFloat(form.km.value);
+      const age = parseInt(form.age.value, 10);
     
     
     
