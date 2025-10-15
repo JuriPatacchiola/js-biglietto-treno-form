@@ -2,37 +2,56 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Compra il biglietto</title>
+  <title>Calcolo Prezzo Biglietto</title>
 </head>
 <body>
-<form id="ticketForm">
-    <label for="km">Numero di chilometri da percorrere:</label><br>
-    <input type="number" id="km" name="km" min="0" step="0.1" required>
-    <br><br>
 
-    <label for="age">Età del passeggero:</label><br>
-    <input type="number" id="age" name="age" min="0" step="1" required>
-    <br><br>
+  <h2>Calcolo Prezzo Biglietto</h2>
 
-    <button type="submit">Calcola Prezzo</button>
+  <form id="ticketForm">
+    <div>
+      <label for="firstName">Nome e Cognome:</label><br>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div style="margin-top:8px;">
+      <label for="km">Numero di chilometri da percorrere:</label><br>
+      <input type="number" id="km" name="km" min="0" step="0.1" required>
+    </div>
+
+    <div style="margin-top:8px;">
+      <label for="ageCategory">Categoria età:</label><br>
+      <select id="ageCategory" name="ageCategory" required>
+        <option value="minor">Minorenne </option>
+        <option value="adult">Maggiorenne </option>
+        <option value="over65">Over 65 </option>
+      </select>
+    </div>
+
+    <div style="margin-top:12px;">
+      <button type="submit">Calcola Prezzo</button>
+    </div>
   </form>
 
+  <!-- spazio per mostrare messaggi di errore -->
+  <div id="errorMessage" role="alert" aria-live="polite" style="color: darkred; margin-top:8px;"></div>
 
-
-    
-  <section id="result" aria-live="polite" style="margin-top:16px; display:none; border:1px solid #ddd; padding:10px; max-width:420px;">
+  <!-- qui apparirà il recap e il prezzo formattato -->
+  <section id="result" aria-live="polite" style="margin-top:16px; display:none; border:1px solid #ddd; padding:10px; max-width:520px;">
     <h3>Riepilogo</h3>
+    <p id="recapName"></p>
     <p id="recapKm"></p>
-    <p id="recapAge"></p>
+    <p id="recapCategory"></p>
     <p id="recapBase"></p>
     <p id="recapDiscount"></p>
     <p id="recapDiscountAmount"></p>
     <p id="recapFinal" style="font-weight:700;"></p>
   </section>
 
-  
   <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
+

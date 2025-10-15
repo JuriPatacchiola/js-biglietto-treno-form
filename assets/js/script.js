@@ -8,29 +8,47 @@
       event.preventDefault();
     
       // Leggo i valori dagli input del form
+      const firstName = form.firstName.value.trim();
       const km = parseFloat(form.km.value);
-      const age = parseInt(form.age.value, 10);
+      const ageCategory = form.ageCategory.value; // 'minor' | 'adult' | 'over65'
     
      // Validazione base
-      if (isNaN(km) || km <= 0) {
-        console.error('Errore: inserisci un numero di chilometri valido.');
+      if (!firstName) {
+        console.error('Errore: inserisci il nome e cognome.');
+        document.getElementById('errorMessage').textContent = 'Inserisci il nome e cognome. ';
+        document.getElementById('result').style.display = 'none';
         return;
       }
 
-      if (isNaN(age) || age < 0) {
-        console.error('Errore: inserisci un\'età valida.');
+
+      if (isNaN(km) || km <= 0) {
+        console.error('Errore: inserisci un numero di chilometri valido.');
+        document.getElementById('errorMessage').textContent = 'Inserisci un numero di chilometri valido (> 0).';
+        document.getElementById('result').style.display = 'none';
         return;
       }
+
+      if (!ageCategory) {
+        console.error('Errore: seleziona la categoria d\'età.');
+        document.getElementById('errorMessage').textContent = 'Seleziona la categoria d\'età.';
+        document.getElementById('result').style.display = 'none';
+        return;
+      }
+
+      // se arrivo qui, rimuovo eventuali messaggi di errore
+      document.getElementById('errorMessage').textContent = '';
     
        // Calcolo prezzo base
       const basePrice = km * PRICE_PER_KM;
       let discount = 0;
 
-      // Regole di sconto
-      if (age < 18) {
+      // Regole di sconto (in base alla selezione a tendina)
+      if (ageCategory === 'minor') {
         discount = 0.20; // 20% sconto
-      } else if (age >= 65) {
+      } else if (ageCategory === 'over65') {
         discount = 0.40; // 40% sconto
+      } else {
+        discount = 0; // maggiorenne: nessuno sconto
       }
 
       // Calcolo prezzo finale
@@ -38,14 +56,19 @@
     
      // Output in console
       console.log('--- Calcolo Prezzo Biglietto ---');
+      console.log(`Nome: ${firstName}`);
       console.log(`Chilometri: ${km}`);
-      console.log(`Età: ${age}`);
+      console.log(`Categoria età: ${ageCategory}`);
       console.log(`Prezzo base: €${basePrice.toFixed(2)}`);
       console.log(`Sconto applicato: ${discount * 100}%`);
       console.log(`Prezzo finale: €${finalPrice.toFixed(2)}`);
       console.log('--------------------------------');
-    
-    
-    
-    
-    }) // Evita il ricaricamento della pagina
+
+      const currencyFmt = new Intl.NumberFormat('it-IT', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      }) 
