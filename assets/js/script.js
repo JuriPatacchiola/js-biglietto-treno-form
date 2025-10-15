@@ -33,6 +33,8 @@
         discount = 0.40; // 40% sconto
       }
 
+      // Calcolo prezzo finale
+      const finalPrice = basePrice * (1 - discount);
     
     
     
