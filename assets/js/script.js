@@ -36,7 +36,14 @@
       // Calcolo prezzo finale
       const finalPrice = basePrice * (1 - discount);
     
-    
+     // Output in console
+      console.log('--- Calcolo Prezzo Biglietto ---');
+      console.log(`Chilometri: ${km}`);
+      console.log(`Età: ${age}`);
+      console.log(`Prezzo base: €${basePrice.toFixed(2)}`);
+      console.log(`Sconto applicato: ${discount * 100}%`);
+      console.log(`Prezzo finale: €${finalPrice.toFixed(2)}`);
+      console.log('--------------------------------');
     
     
     
