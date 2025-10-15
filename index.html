@@ -1,57 +1,105 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Calcolo Prezzo Biglietto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Calcolo Prezzo Biglietto</title>
 </head>
 <body>
 
-  <h2>Calcolo Prezzo Biglietto</h2>
+  <h2>Simulazione Biglietto Treno</h2>
 
-  <form id="ticketForm">
-    <div>
-      <label for="firstName">Nome e Cognome:</label><br>
-      <input type="text" id="firstName" name="firstName" required>
-    </div>
+  <div class="ticket-container">
 
-    <div style="margin-top:8px;">
-      <label for="km">Numero di chilometri da percorrere:</label><br>
-      <input type="number" id="km" name="km" min="0" step="0.1" required>
-    </div>
+        <div class="ticket-block top-block">
+            <header class="train-header">
+                <span class="special-express">Special Express</span>
+                <span class="train-company">TRAIN COMPANY</span>
+            </header>
 
-    <div style="margin-top:8px;">
-      <label for="ageCategory">Categoria età:</label><br>
-      <select id="ageCategory" name="ageCategory" required>
-        <option value="minor">Minorenne </option>
-        <option value="adult">Maggiorenne </option>
-        <option value="over65">Over 65 </option>
-      </select>
-    </div>
+            <form id="ticketForm" class="form-grid">
+                
+                <div class="ticket-col left-col">
+                    <div class="ticket-label-box single-box">BIGLIETTO UNICO</div>
+                    <div class="ticket-info-box train-details">
+                        <label for="firstName">Nome e Cognome:</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Inserisci nome">
+                        
+                        <label for="ageCategory">Categoria età:</label>
+                        <select id="ageCategory" name="ageCategory" required>
+                            <option value="minor">Minorenne </option>
+                            <option value="adult">Maggiorenne </option>
+                            <option value="over65">Over 65 </option>
+                        </select>
+                    </div>
+                </div>
 
-    <div style="margin-top:12px;">
-      <button type="submit">Calcola Prezzo</button>
-    </div>
-  </form>
-
-  <!-- spazio per mostrare messaggi di errore -->
-  <div id="errorMessage" role="alert" aria-live="polite" style="color: darkred; margin-top:8px;"></div>
-
-  <!-- qui apparirà il recap e il prezzo formattato -->
-  <section id="result" aria-live="polite" style="margin-top:16px; display:none; border:1px solid #ddd; padding:10px; max-width:520px;">
-    <h3>Riepilogo</h3>
-    <p id="recapName"></p>
-    <p id="recapKm"></p>
-    <p id="recapCategory"></p>
-    <p id="recapBase"></p>
-    <p id="recapDiscount"></p>
-    <p id="recapDiscountAmount"></p>
-    <p id="recapFinal" style="font-weight:700;"></p>
-  </section>
-
-  <script src="./assets/js/script.js"></script>
-
+                <div class="ticket-col right-col">
+                    
+                    <div class="info-box-placeholder">
+                        <span class="placeholder-text">DETTAGLI CALCOLO</span>
+                    </div>
+                    
+                    <div class="ticket-details-row km-section">
+                        <div class="detail-box full-width">
+                            <label for="km">Chilometri da percorrere:</label>
+                            <input type="number" id="km" name="km" min="0" step="0.1" required placeholder="Esempio: 150.5">
+                        </div>
+                    </div>
+                    
+                    <div class="ticket-details-row price-section">
+                         <button type="submit">CALCOLA PREZZO</button>
+                    </div>
+                    
+                    <div id="errorMessage" role="alert" aria-live="polite" class="error-message"></div>
+                </div>
+            </form>
+        </div>
+        <div id="result" class="ticket-block bottom-block" style="display:none;">
+            <header class="train-header bottom-header">
+                <span class="train-company">TRAIN COMPANY</span>
+            </header>
+            
+            <div class="bottom-content-grid">
+                <div class="bottom-col qr-area">
+                     <div class="qr-placeholder small-qr">QR CODE</div>
+                </div>
+                
+                <div class="bottom-col summary-area">
+                    <h4 class="summary-title">RIEPILOGO BIGLIETTO</h4>
+                    
+                    <div class="summary-row">
+                        <p class="recap-label">Nome:</p> <p id="recapName" class="recap-value"></p>
+                    </div>
+                    <div class="summary-row">
+                        <p class="recap-label">Distanza (KM):</p> <p id="recapKm" class="recap-value"></p>
+                    </div>
+                    <div class="summary-row">
+                        <p class="recap-label">Categoria:</p> <p id="recapCategory" class="recap-value"></p>
+                    </div>
+                    <div class="summary-row">
+                        <p class="recap-label base-price">Prezzo Base:</p> <p id="recapBase" class="recap-value base-price"></p>
+                    </div>
+                    <div class="summary-row">
+                        <p class="recap-label discount-info">Sconto:</p> <p id="recapDiscount" class="recap-value discount-info"></p>
+                    </div>
+                    <div class="summary-row">
+                        <p class="recap-label discount-amount">Ammontare:</p> <p id="recapDiscountAmount" class="recap-value discount-amount"></p>
+                    </div>
+                    
+                    <div class="final-price-box">
+                        <span class="final-price-label">PREZZO FINALE:</span>
+                        <span id="recapFinal" class="final-price-value"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="ticket-footer">
+                E-mail: Simple@mail.com
+            </footer>
+        </div>
+          </div> 
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,263 @@
+:root {
+    --color-red: #E9574E;
+    --color-dark: #333333;
+    --color-light: #f7f7f7;
+    --color-white: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h2 {
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticket-container {
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--color-dark);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Base Block Styling */
+.ticket-block {
+    padding: 15px;
+    border-bottom: 2px dashed #ddd; /* Separazione tra i blocchi */
+}
+
+/* Header/Footer Styling (Red Bar) */
+.train-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 6px 15px;
+    margin: -15px -15px 15px -15px; /* Extends to the edges */
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.train-header.bottom-header {
+    justify-content: flex-start;
+}
+
+.special-express {
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ************ BLOCCO SUPERIORE: INPUT/FRONT ************ */
+
+#ticketForm {
+    display: flex;
+    gap: 15px;
+}
+
+.ticket-col {
+    padding: 0;
+}
+
+.left-col {
+    flex: 1.5; /* Più spazio per i dettagli */
+    border-right: 1px solid #ddd;
+    padding-right: 15px;
+}
+
+.right-col {
+    flex: 2.5; /* Più spazio per i dettagli di calcolo */
+}
+
+.ticket-label-box {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    padding: 6px 10px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+/* Input/Select Styling */
+.ticket-info-box label, .detail-box label {
+    display: block;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.ticket-info-box input,
+.ticket-info-box select,
+.detail-box input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Nuovo stile per il placeholder in alto a destra */
+.info-box-placeholder {
+    height: 60px; /* Altezza simile ai campi di input per bilanciare */
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+/* KM Input section */
+.km-section {
+    display: block; /* Rende la riga KM una colonna unica */
+}
+
+.detail-box.full-width {
+    width: 100%;
+    padding: 0; /* Rimuove padding extra del dettaglio */
+    background-color: transparent;
+    text-align: left;
+}
+
+
+.price-section button {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.error-message {
+    color: darkred;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8px;
+}
+
+
+/* ************ BLOCCO INFERIORE: RECAP/BACK (Nessuna modifica sostanziale) ************ */
+
+.bottom-block {
+    background-color: var(--color-white);
+    border-bottom: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.bottom-content-grid {
+    display: flex;
+    gap: 15px;
+}
+
+.bottom-col.qr-area {
+    flex: 1;
+}
+
+.bottom-col.summary-area {
+    flex: 3;
+}
+
+.qr-placeholder {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+    text-align: center;
+    border: 1px solid #999;
+    font-weight: bold;
+}
+
+.qr-placeholder.small-qr {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0 0;
+    font-size: 0.7em;
+}
+
+.summary-title {
+    font-size: 1.1em;
+    color: var(--color-red);
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.recap-label {
+    font-weight: normal;
+    color: #666;
+    margin: 0;
+}
+
+.recap-value {
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+}
+
+.base-price {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.discount-info, .discount-amount {
+    color: green;
+}
+
+.final-price-box {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid var(--color-dark);
+    margin-top: 10px;
+    padding-top: 8px;
+    font-size: 1.1em;
+}
+
+.final-price-value {
+    color: var(--color-red);
+    font-weight: bold;
+}
+
+.ticket-footer {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 15px;
+    color: #999;
+}
+
+
+.ticket-block {
+    padding: 15px;
+    border-bottom: none; 
+}
+
+
+.ticket-block.top-block {
+    margin-bottom: 15px; 
+}
