@@ -70,5 +70,13 @@
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });
+       // calcolo importo sconto
+      const discountAmount = basePrice * discount;
 
+       // mappa label per la categoria visualizzata
+      const categoryLabelMap = {
+        minor: 'Minorenne (sconto 20%)',
+        adult: 'Maggiorenne (nessuno sconto)',
+        over65: 'Over 65 (sconto 40%)'
+      };
       }) 
