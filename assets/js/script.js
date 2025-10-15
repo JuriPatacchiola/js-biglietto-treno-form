@@ -79,4 +79,16 @@
         adult: 'Maggiorenne (nessuno sconto)',
         over65: 'Over 65 (sconto 40%)'
       };
+
+       // recap in pagina
+      document.getElementById('recapName').textContent = `Passeggero: ${firstName}`;
+      document.getElementById('recapKm').textContent = `Chilometri: ${km}`;
+      document.getElementById('recapCategory').textContent = `Categoria: ${categoryLabelMap[ageCategory] || ageCategory}`;
+      document.getElementById('recapBase').textContent = `Prezzo base: ${currencyFmt.format(basePrice)}`;
+      document.getElementById('recapDiscount').textContent = `Sconto applicato: ${Math.round(discount * 100)}%`;
+      document.getElementById('recapDiscountAmount').textContent = `Importo sconto: ${currencyFmt.format(discountAmount)}`;
+      document.getElementById('recapFinal').textContent = `Prezzo finale: ${currencyFmt.format(finalPrice)}`;
+
+      // mostra il risultato
+      document.getElementById('result').style.display = 'block';
       }) 
